@@ -1,0 +1,16 @@
+{
+    "contents" : "## These functions take a square matrix and return its inverse.  The inverse is\n## calculated if it has not been previously done.  If the inverse has already been\n## calculated the inverse is returned from an object saved in cache\n\n## This function initializes the inverse to null and returns a list of 3 functions\n\nmakeCacheMatrix <- function(x = matrix()) {\n  i <- NULL\n  get <- function() x\n  setInv <- function(Inv) i <<- Inv\n  getInv <- function() i\n  list(get = get, setInv = setInv,\n       getInv = getInv)\n}\n\n## This function takes the list of functions from makeCacheMatrix as an argument\n## and either calculates the inverse or retrieves the inverse from cache.  The \n## inverse is returned\n\ncacheSolve <- function(x, ...) {\n  i <- x$getInv()\n  if(!is.null(i)) {\n    message(\"getting cached data\")\n    return(i)\n       } else {\n        data <- x$get()\n        i <- solve(data, ...)\n        x$setInv(i)\n       }\n  i      \n}\n\n\n",
+    "created" : 1400147917711.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3055553117",
+    "id" : "1F6594F",
+    "lastKnownWriteTime" : 1400149901,
+    "path" : "~/GitHub/ProgrammingAssignment2/cachematrix.R",
+    "project_path" : "cachematrix.R",
+    "properties" : {
+    },
+    "source_on_save" : true,
+    "type" : "r_source"
+}
